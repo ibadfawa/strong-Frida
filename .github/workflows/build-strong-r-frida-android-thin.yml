@@ -1,4 +1,4 @@
-name: "StrongR Frida Android CI(thin)"
+name: "StrongR Frida Android CI (ibad)"
 
 on:
   workflow_dispatch:
@@ -51,11 +51,10 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "<>"
           git clone -b ${{ github.event.inputs.from }} --recurse-submodules https://github.com/frida/frida
-          git clone https://github.com/Alexjr2/prida-thin
+          git clone https://github.com/ibadfawa/strong-Frida
           cd frida/frida-core          
-          git am ../../prida-thin/patches/frida/strong-r/*.patch
+          git am ../../strong-Frida/patches/frida/strong-r/*.patch
           cd ../
-          git apply ../prida-thin/patches/frida/thin/config_mk.patch
           make core-android-arm64
           make core-android-arm
           make core-android-x86
