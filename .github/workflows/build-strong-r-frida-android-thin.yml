@@ -42,7 +42,7 @@ jobs:
           sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install build-essential tree ninja-build gcc-multilib g++-multilib lib32stdc++-9-dev flex bison xz-utils ruby ruby-dev python3-requests python3-setuptools python3-dev python3-pip libc6-dev libc6-dev-i386 -y
           sudo gem install fpm -v 1.11.0 --no-document
           python3 -m pip install lief
-          npm install -g frida-compile@10.2.5
+          
 
       - name: Build frida for Android
         shell: bash
@@ -56,6 +56,7 @@ jobs:
           cd frida/frida-core          
           git am ../../strong-Frida/patches/frida/strong-r/*.patch
           cd ../
+          git apply ../strong-Frida/patches/frida/thin/config_mk.patch
           make core-android-arm64
           make core-android-arm
           
