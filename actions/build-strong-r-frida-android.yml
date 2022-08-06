@@ -6,7 +6,7 @@ on:
       from:
         description: "Enter branch/tag to build frida from(Default : main)"
         required: false
-        default: "main"
+        default: "master"
 
 jobs:
   build:
@@ -51,9 +51,9 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "<>"
           git clone -b ${{ github.event.inputs.from }} --recurse-submodules https://github.com/frida/frida
-          git clone https://github.com/KingMahmud/KingMahmud
+          git clone https://github.com/ibadfawa/strong-Frida
           cd frida/frida-core          
-          git am ../../KingMahmud/patches/frida/strong-r/*.patch
+          git am ../../strong-Frida/patches/frida/strong-r/*.patch
           cd ../
           make core-android-arm64
           make core-android-arm
